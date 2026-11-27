@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KantongKeluarga — 12 Kategori, 8 Kalkulator, 5 Skenario, 30 Hari Bertahan</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#beranda"><span class="coin">Rp</span> KantongKeluarga</a>
+    <nav>
+      <a href="#beranda">Beranda</a>
+      <a href="#kalkulator">Kalkulator</a>
+      <a href="#skenario">Skenario</a>
+      <a href="#30hari">30 Hari</a>
+      <a href="#tips">Tips</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="beranda" class="hero">
+    <p class="kicker">Gaji UMR vs Biaya Hidup Nyata</p>
+    <h1>Uang gaji habis sebelum tanggal 30? Atur di sini, sampai akhir bulan.</h1>
+    <p class="sub">Satu halaman untuk keluarga Indonesia: 12 kategori belanja, 8 kalkulator, 5 skenario gaji, dan simulasi bertahan 30 hari. Semua dihitung langsung di browser — tanpa internet, tanpa daftar, data tersimpan di HP kamu sendiri.</p>
+    <div class="gaji-box">
+      <label for="gaji">Gaji / penghasilan sebulan (Rp)</label>
+      <input id="gaji" type="number" min="0" step="50000" value="5000000">
+      <label for="anggota">Jumlah anggota keluarga</label>
+      <select id="anggota">
+        <option value="2">2 orang</option>
+        <option value="3">3 orang</option>
+        <option value="4" selected>4 orang (2 anak)</option>
+        <option value="5">5 orang</option>
+        <option value="6">6 orang</option>
+      </select>
+      <div class="sisa">
+        <span>Sisa uang bulan ini</span>
+        <strong id="sisaUang">Rp0</strong>
+        <em id="verdict">—</em>
+      </div>
+      <div class="row-btn">
+        <button id="btnSimpan" type="button">Simpan Anggaran</button>
+        <button id="btnReset" type="button" class="ghost">Reset ke Contoh</button>
+      </div>
+      <p id="saveNote" class="note"></p>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Donat Anggaran: ke mana perginya gajimu?</h2>
+    <div class="donut-wrap">
+      <div id="donut" class="donut" role="img" aria-label="Diagram donat pembagian anggaran"></div>
+      <ul id="legend" class="legend"></ul>
+    </div>
+    <div class="rule503020">
+      <h3>Patokan 50 / 30 / 20</h3>
+      <p>Kebutuhan pokok sebaiknya 50%, keinginan 30%, tabungan + cicilan 20%. Anggaranmu sekarang:</p>
+      <div class="bar-503020"><div id="barButuh" class="seg butuh"></div><div id="barIngin" class="seg ingin"></div><div id="barTabung" class="seg tabung"></div></div>
+      <p id="teks503020" class="note"></p>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>12 Kategori Belanja — geser slidernya, angkanya ikut</h2>
+    <p class="note">Contoh awal: keluarga 4 orang, gaji Rp5.000.000. Ubah sesuai pengeluaranmu yang sebenarnya.</p>
+    <div id="kategoriList" class="kategori"></div>
+    <p class="total-line">Total belanja: <strong id="totalBelanja">Rp0</strong> dari gaji <strong id="gajiTampil">Rp0</strong></p>
+  </section>
+
+  <section id="kalkulator" class="panel">
+    <h2>8 Kalkulator Keluarga</h2>
+    <p class="note">Semua kalkulator menghitung langsung saat kamu mengetik. Tidak ada yang dikirim ke mana-mana.</p>
+    <div class="grid-kalk">
+      <article class="kalk" id="k1">
+        <h3>1. Anggaran 50/30/20</h3>
+        <label>Gaji sebulan (Rp) <input type="number" id="k1gaji" value="5000000" min="0" step="50000"></label>
+        <p class="hasil" id="k1out">—</p>
+      </article>
+      <article class="kalk" id="k2">
+        <h3>2. Dana Darurat</h3>
+        <label>Pengeluaran sebulan (Rp) <input type="number" id="k2keluar" value="4000000" min="0" step="50000"></label>
+        <label>Tabungan darurat sekarang (Rp) <input type="number" id="k2punya" value="1000000" min="0" step="50000"></label>
+        <label>Sisihkan per bulan (Rp) <input type="number" id="k2sisih" value="250000" min="0" step="50000"></label>
+        <p class="hasil" id="k2out">—</p>
+      </article>
+      <article class="kalk" id="k3">
+        <h3>3. Cicilan Motor</h3>
+        <label>Harga motor (Rp) <input type="number" id="k3harga" value="18000000" min="0" step="500000"></label>
+        <label>Uang muka (Rp) <input type="number" id="k3dp" value="3000000" min="0" step="500000"></label>
+        <label>Tenor (bulan) <input type="number" id="k3tenor" value="24" min="1" max="60"></label>
+        <label>Bunga per tahun (%) <input type="number" id="k3bunga" value="12" min="0" step="1"></label>
+        <p class="hasil" id="k3out">—</p>
+      </article>
+      <article class="kalk" id="k4">
+        <h3>4. Biaya Sekolah Anak</h3>
+        <label>SPP per anak / bulan (Rp) <input type="number" id="k4spp" value="250000" min="0" step="10000"></label>
+        <label>Seragam + buku per anak / semester (Rp) <input type="number" id="k4seragam" value="600000" min="0" step="50000"></label>
+        <label>Les / ekskul per anak / bulan (Rp) <input type="number" id="k4les" value="150000" min="0" step="10000"></label>
+        <label>Jumlah anak <input type="number" id="k4anak" value="2" min="1" max="6"></label>
+        <p class="hasil" id="k4out">—</p>
+      </article>
+      <article class="kalk" id="k5">
+        <h3>5. Listrik &amp; Token</h3>
+        <label>Daya listrik
+          <select id="k5daya">
+            <option value="450">450 VA</option>
+            <option value="900" selected>900 VA</option>
+            <option value="1300">1.300 VA</option>
+            <option value="2200">2.200 VA</option>
+          </select>
+        </label>
+        <label>Pemakaian (kWh / bulan) <input type="number" id="k5kwh" value="150" min="0"></label>
+        <p class="hasil" id="k5out">—</p>
+      </article>
+      <article class="kalk" id="k6">
+        <h3>6. Belanja Harian</h3>
+        <label>Belanja sayur + lauk per hari (Rp) <input type="number" id="k6hari" value="60000" min="0" step="5000"></label>
+        <label>Jajan + kopi per hari (Rp) <input type="number" id="k6jajan" value="20000" min="0" step="5000"></label>
+        <p class="hasil" id="k6out">—</p>
+      </article>
+      <article class="kalk" id="k7">
+        <h3>7. Tabungan Target</h3>
+        <label>Target tabungan (Rp) <input type="number" id="k7target" value="10000000" min="0" step="500000"></label>
+        <label>Setoran per bulan (Rp) <input type="number" id="k7setor" value="500000" min="0" step="50000"></label>
+        <label>Sudah terkumpul (Rp) <input type="number" id="k7punya" value="2000000" min="0" step="50000"></label>
+        <p class="hasil" id="k7out">—</p>
+      </article>
+      <article class="kalk" id="k8">
+        <h3>8. Simulasi 30 Hari</h3>
+        <label>Gaji sebulan (Rp) <input type="number" id="k8gaji" value="5000000" min="0" step="50000"></label>
+        <label>Pengeluaran tetap sebulan (Rp) <input type="number" id="k8tetap" value="3350000" min="0" step="50000"></label>
+        <p class="hasil" id="k8out">—</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="skenario" class="panel">
+    <h2>5 Skenario Gaji — klik, anggarannya langsung terisi</h2>
+    <p class="note">Lima potret keluarga Indonesia. Pilih yang paling dekat denganmu, lalu ubah angka-angkanya.</p>
+    <div id="skenarioBtns" class="skenario-btns"></div>
+    <div id="skenarioBox" class="skenario-box">
+      <h3 id="skenarioJudul">Skenario: Gaji Rp5.000.000 — 1 anak</h3>
+      <p id="skenarioCerita">—</p>
+      <p class="hasil" id="skenarioHasil">—</p>
+    </div>
+  </section>
+
+  <section id="30hari" class="panel">
+    <h2>Simulasi Bertahan 30 Hari</h2>
+    <p class="note">Uang harianmu dihitung dari sisa gaji setelah pengeluaran tetap. Tabel di bawah menunjukkan saldo tiap hari — kalau saldo menyentuh nol sebelum hari ke-30, berarti ada yang harus dipangkas.</p>
+    <label class="inline-label">Uang yang bisa dibelanjakan per hari (Rp)
+      <input type="number" id="uangHarian" value="55000" min="0" step="5000">
+    </label>
+    <div class="progress"><div id="progressBar" class="progress-bar"></div></div>
+    <p id="hariBertahan" class="hasil">—</p>
+    <div class="table-wrap">
+      <table id="tabel30">
+        <thead><tr><th>Hari</th><th>Belanja hari itu</th><th>Sisa saldo</th><th>Status</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="tips" class="panel">
+    <h2>10 Tips Hemat yang Angkanya Nyata</h2>
+    <ol id="tipsList" class="tips"></ol>
+  </section>
+
+  <footer>
+    <p><strong>KantongKeluarga</strong> — dibuat untuk keluarga Indonesia. 100% berjalan offline: tidak ada data yang dikirim ke server mana pun. Anggaran yang kamu simpan hanya ada di browser HP/komputer kamu sendiri (localStorage) dan bisa dihapus kapan saja dengan tombol Reset.</p>
+    <p class="note">Angka contoh memakai harga umum 2026 (UMR Bandung Rp3.850.000, tarif listrik 900 VA Rp1.352/kWh). Sesuaikan dengan struk belanja dan tagihanmu sendiri.</p>
+  </footer>
+</main>
+<script src="data.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

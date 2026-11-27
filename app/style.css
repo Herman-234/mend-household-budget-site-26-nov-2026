@@ -1,0 +1,79 @@
+/* KantongKeluarga — gaya sendiri, tanpa font atau gambar dari internet. */
+* { box-sizing: border-box; }
+:root {
+  --hijau: #1b7a43; --hijau-tua: #145c32; --hijau-muda: #e6f4ea;
+  --kuning: #f2b705; --oranye: #e07b39; --merah: #c0392b;
+  --tinta: #22301f; --abu: #5c6b5a; --garis: #d9e2d4; --kartu: #ffffff; --latar: #f4f7f2;
+}
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; background: var(--latar); color: var(--tinta); line-height: 1.55; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 0 16px; }
+.top { background: var(--hijau-tua); position: sticky; top: 0; z-index: 10; }
+.top .wrap { display: flex; align-items: center; gap: 18px; min-height: 56px; flex-wrap: wrap; }
+.logo { color: #fff; font-weight: 800; font-size: 20px; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.coin { background: var(--kuning); color: #3a2c00; border-radius: 50%; width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; }
+nav { display: flex; gap: 4px; flex-wrap: wrap; margin-left: auto; }
+nav a { color: #dff0e2; text-decoration: none; padding: 8px 10px; border-radius: 8px; font-size: 14px; }
+nav a:hover { background: rgba(255,255,255,.14); color: #fff; }
+.hero { padding: 28px 0 8px; }
+.kicker { display: inline-block; background: var(--kuning); color: #3a2c00; font-weight: 700; padding: 4px 12px; border-radius: 999px; font-size: 13px; margin: 0 0 10px; }
+h1 { font-size: 30px; line-height: 1.25; margin: 0 0 10px; }
+.sub { font-size: 17px; color: var(--abu); max-width: 640px; }
+h2 { font-size: 22px; margin: 0 0 8px; }
+h3 { font-size: 17px; margin: 0 0 8px; }
+.panel { background: var(--kartu); border: 1px solid var(--garis); border-radius: 14px; padding: 20px; margin: 18px 0; }
+.note { color: var(--abu); font-size: 14px; }
+.gaji-box { background: var(--hijau-muda); border: 1px solid #bcdcc4; border-radius: 12px; padding: 16px; margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.gaji-box label { display: block; font-size: 14px; font-weight: 600; }
+.gaji-box input, .gaji-box select, .kalk input, .kalk select, .inline-label input { width: 100%; padding: 10px; margin-top: 4px; border: 1px solid #b9c8b4; border-radius: 8px; font-size: 16px; background: #fff; }
+.sisa { grid-column: 1 / -1; background: #fff; border-radius: 10px; padding: 14px; text-align: center; }
+.sisa span { display: block; font-size: 14px; color: var(--abu); }
+.sisa strong { font-size: 34px; color: var(--hijau-tua); }
+.sisa em { display: block; font-style: normal; font-weight: 700; margin-top: 4px; }
+.sisa em.ok { color: var(--hijau); } .sisa em.warn { color: var(--oranye); } .sisa em.bad { color: var(--merah); }
+.row-btn { grid-column: 1 / -1; display: flex; gap: 10px; flex-wrap: wrap; }
+button { background: var(--hijau); color: #fff; border: 0; border-radius: 8px; padding: 11px 18px; font-size: 15px; font-weight: 700; cursor: pointer; }
+button:hover { background: var(--hijau-tua); }
+button.ghost { background: #fff; color: var(--hijau-tua); border: 1px solid var(--hijau); }
+.donut-wrap { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+.donut { width: 180px; height: 180px; border-radius: 50%; flex-shrink: 0; }
+.legend { list-style: none; margin: 0; padding: 0; }
+.legend li { margin: 6px 0; font-size: 15px; }
+.legend .sw { display: inline-block; width: 14px; height: 14px; border-radius: 4px; margin-right: 8px; vertical-align: -2px; }
+.bar-503020 { display: flex; height: 22px; border-radius: 999px; overflow: hidden; margin: 10px 0; background: #eef2ec; }
+.bar-503020 .seg { height: 100%; }
+.seg.butuh { background: var(--hijau); } .seg.ingin { background: var(--kuning); } .seg.tabung { background: var(--oranye); }
+.kategori { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.kat { border: 1px solid var(--garis); border-radius: 10px; padding: 12px; }
+.kat .kat-head { display: flex; justify-content: space-between; gap: 8px; font-weight: 700; }
+.kat .kat-head output { color: var(--hijau-tua); white-space: nowrap; }
+.kat input[type=range] { width: 100%; accent-color: var(--hijau); margin: 8px 0 4px; }
+.kat .kat-sub { font-size: 13px; color: var(--abu); }
+.total-line { font-size: 17px; margin-top: 14px; }
+.grid-kalk { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.kalk { border: 1px solid var(--garis); border-radius: 10px; padding: 14px; background: #fbfdfb; }
+.kalk label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+.hasil { background: var(--hijau-muda); border-radius: 8px; padding: 10px 12px; font-weight: 600; margin: 10px 0 0; }
+.skenario-btns { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.skenario-btns button { background: #fff; color: var(--hijau-tua); border: 2px solid var(--hijau); padding: 9px 12px; font-size: 14px; }
+.skenario-btns button.aktif { background: var(--hijau); color: #fff; }
+.skenario-box { border: 1px dashed var(--hijau); border-radius: 10px; padding: 14px; background: #fbfdfb; }
+.inline-label { display: block; font-weight: 600; margin: 8px 0; max-width: 420px; }
+.progress { height: 18px; background: #eef2ec; border-radius: 999px; overflow: hidden; margin: 12px 0 4px; }
+.progress-bar { height: 100%; background: var(--hijau); width: 0; }
+.table-wrap { overflow-x: auto; margin-top: 12px; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { border: 1px solid var(--garis); padding: 7px 10px; text-align: left; }
+th { background: var(--hijau-muda); }
+tr.habis td { background: #fdeceb; color: var(--merah); font-weight: 700; }
+.tips { padding-left: 20px; }
+.tips li { margin: 10px 0; }
+.tips b { color: var(--hijau-tua); }
+footer { padding: 8px 0 34px; color: var(--abu); font-size: 14px; }
+@media (max-width: 640px) {
+  h1 { font-size: 24px; }
+  .gaji-box, .kategori, .grid-kalk { grid-template-columns: 1fr; }
+  nav a { padding: 6px 7px; font-size: 13px; }
+  .sisa strong { font-size: 28px; }
+  .donut { width: 150px; height: 150px; }
+}
